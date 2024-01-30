@@ -1,13 +1,14 @@
 #!/bin/bash
 command=$1
+flag=$2
 
 custom_command() {
     case $command in
-        "pull") docker pull $2
+        "pull") docker pull $flag
         ;;
         "list") docker images
         ;;
-        "delete") docker rmi $2
+        "delete") docker rmi $flag
         ;;
         *) echo "you can choice pull (command) / list / delete (command)"
     esac

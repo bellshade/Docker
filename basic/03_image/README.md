@@ -52,3 +52,19 @@ Kalian bisa hapus image tersebut dengan menggunakan flag `-f` untuk filter untuk
 $ docker rmi $(docker images -f "dangling=true" -q)
 77af4d6b9913
 ```
+
+### Sample Usage
+Kalau kalian mau mencoba kalian bisa running command yang ada diatas, atau kalian juga bisa running script `main.sh`. Sebelum di running kalian harus `chmod +x main.sh` terlebih dahulu
+
+Jika kalian ingin pull image kalian bisa melakukan ini
+```bash
+./main.sh pull image
+```
+Kalau ingin lihat list image kalian bisa melakukan ini
+```bash
+./main.sh list
+```
+Kalau kalian ingin delete image kalian juga bisa melakukan ini
+```bash
+./main.sh delete image
+```
