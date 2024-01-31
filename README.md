@@ -7,8 +7,8 @@ Repository ini adalah tempat untuk kalian belajar Docker berbahasa Indonesia. Do
 Bagi kalian yang belum memiliki docker bisa ikuti cara di bawah ini, namun jika kalian pengguna windows kalian bisa melihat langsung di [Docker Dokumentasi](https://docs.docker.com/desktop/install/windows-install/)
 
 ```bash
-$ chmod +x main.sh
-$ ./main.sh
+$ chmod +x install.sh
+$ ./install.sh
 ```
 
 ## 🤩 Ayo ikut kami dan berkontribusi! 🤩
