@@ -1,6 +1,14 @@
 # *Contributing*
-![contributor](https://img.shields.io/github/contributors/bellshade/PythonAlgorithm?label=kontributor&style=for-the-badge)
+![banner](.github/banner.png)
+***Contributor***
 
+Kami sangat senang anda telah ikut berkontribusi dalam implementasi algortima, struktur data, atau memperbaiki *error*.
+Semua boleh ikut berkontribusi sekecil apapun dengan pengecualian sebagai berikut:
+
+- Hasil pekerjaan kamu adalah buatan kamu sendiri dan tidak ada hak cipta dari orang lain. Jika kami menemukan kesamaan, maka tidak kami *merge*.
+- Hasil kerja kamu akan berlisensi [MIT](LICENSE) ketika *pull request* kamu sudah di-*merge*.
+- Hasil kerja kamu wajib mengikuti standar dan *style* koding dari kami.
+s
 ## Testing Image
 **Installasi**
 Untuk testing pada repository docker saat ini menggunakan shell scripting. Untuk pengguna windows pun bisa asalkan punya docker engine yang cli. Ada beberapa flag yang harus dipahami untuk melakukan build testing
