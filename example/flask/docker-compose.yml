@@ -1,7 +1,7 @@
 version: '3.7'
 
 services:
-  web-apps:
+  web:
     container_name: web
     build:
       context: .
