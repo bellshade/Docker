@@ -1,0 +1,40 @@
+version: '3.9'
+services:
+  webapp:
+    image: nginx
+    container_name: webapp
+    environment:
+      - OWNER=Bellshade
+      - LINK_GITHUB=https://github.com/bellshade/Docker
+    ports:
+      - 4000:80
+    depends_on:
+      - db
+    networks:
+      - connection
+    
+  db:
+    image: postgres:alpine
+    container_name: dbapp
+    environment:
+      - POSTGRES_USER=bellshade
+      - POSTGRES_PASSWORD=bellshade
+      - POSTGRES_DB=simpletest
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - connection
+  
+  custom_image:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: custom_image
+    ports:
+      - 8000:8080
+    networks:
+      - connection
+
+networks:
+  connection:
+    driver: bridge
