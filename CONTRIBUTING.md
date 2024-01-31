@@ -1,3 +1,31 @@
+# *Contributing*
+![contributor](https://img.shields.io/github/contributors/bellshade/PythonAlgorithm?label=kontributor&style=for-the-badge)
+
+## Testing Image
+**Installasi**
+Untuk testing pada repository docker saat ini menggunakan shell scripting. Untuk pengguna windows pun bisa asalkan punya docker engine yang cli. Ada beberapa flag yang harus dipahami untuk melakukan build testing
+
+| Flag | Description                                             | Usage              |
+|------|---------------------------------------------------------|--------------------|
+| -f   | file dockerfile jika pakai default tidak usah digunakan | -f [namaFile]      |
+| -i   | Untuk nama image                                        | -i [namaImage]     |
+| -t   | tag image                                               | -f ['tagImage']    |
+| -d   | port yang ingin di publish                              | -p [port]          |
+| -s   | source port dari docker image                           | -s [port]          |
+| -c   | nama untuk container                                    | -c [namaContainer] |
+| -e   | expected output untuk echo type                         | -e ['expected']    |
+
+**Usage**
+Untuk saat ini ada 2 type yaitu `app` dan `echo`, khusus type `app` bagi yang memang harus publish port untuk di running, bagi yang `echo` jika hanya text yang keluar. Contoh command jika type `app` 
+
+```
+bash build.sh -t 'app' -d 3000 -s 80 -c sample-app -f Dockerfile.app -i sample-image
+```
+Jika kalian type nya adalah `echo` kalian bisa memakai cara seperti ini untuk testing image kalian
+```
+bash build.sh -t 'echo' -e 'Hello Bellshade' -c sample-app-2 -f Dockerfile.echo -i sample-image-2
+```
+
 # *Pull Request*
 
 ***Pull request* yang baik**

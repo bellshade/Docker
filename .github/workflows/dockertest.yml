@@ -1,0 +1,24 @@
+name: github action docker
+on: [push]
+jobs:
+  test-running-docker:
+    runs-on: ubuntu-latest
+    steps:
+    - name: cek kode repository
+      uses: action/checkout@v2
+
+    - run: echo "Hallo, selamat datang di Bellshade Docker"
+
+    - name: running testing docker
+      run: |
+        ls ${{ github.workspace }}
+        chmod +x testing.sh
+        ./testing.sh
+    - run: echo "status ${{ job.status }}"
+
+    - name: delete all depedency
+      run: |
+        cd ../../bats-core
+        ./uninstall.sh
+    - run: echo "success deleted"
+
