@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: cek kode repository
-      uses: action/checkout@v2
+      uses: actions/checkout@v2
 
     - run: echo "Hallo, selamat datang di Bellshade Docker"
 
