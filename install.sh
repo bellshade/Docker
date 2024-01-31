@@ -7,13 +7,6 @@ install_compose_in_linux() {
     sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
 }
 
-install_compose_in_mac() {
-    DESTINATION=/usr/local/bin/docker-compose
-    chmod 755 $DESTINATION
-    VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
-    curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
-}
-
 check_linux(){
     . /etc/os-release
     case $ID in 
@@ -37,8 +30,7 @@ checking_os(){
         install_compose_in_linux
         ;;
         Darwin) 
-        brew install docker wget curl
-        install_compose_in_mac
+        brew install docker docker-compose wget curl
         ;;
         *) echo "If windows you can see the documentation"
         ;;
