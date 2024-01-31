@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  db:
+    container_name: dbapp
+    image: mysql
+    hostname: db
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${ROOT_PASS}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASS}
+      - MYSQL_DATABASE=${DB_NAME}
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - connection
+  
+  pma:
+    container_name: pmaapp
+    image: phpmyadmin
+    hostname: pma
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=${DB_HOST}
+      - PMA_USER=${DB_USER}
+      - PMA_PASSWORD=${DB_PASS}
+    depends_on:
+      - db
+    networks:
+      - connection
+
+networks:
+  connection:
+    driver: bridge
