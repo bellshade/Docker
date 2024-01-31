@@ -25,7 +25,7 @@
 <!-- Checklist unit tester / linter yang sesuai. -->
 
 - [ ] bats
-- [ ] docker-compose
+- [ ] bash
 
 ## Environment
 

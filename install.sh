@@ -1,15 +1,44 @@
 #!/bin/bash
 
-checking_os(){
+install_compose_in_linux() {
+    DESTINATION=/usr/local/bin/docker-compose
+    sudo chmod 755 $DESTINATION
+    VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+    sudo curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
+}
+
+install_compose_in_mac() {
+    DESTINATION=/usr/local/bin/docker-compose
+    chmod 755 $DESTINATION
+    VERSION=$(curl --silent https://api.github.com/repos/docker/compose/releases/latest | grep -Po '"tag_name": "\K.*\d')
+    curl -L https://github.com/docker/compose/releases/download/${VERSION}/docker-compose-$(uname -s)-$(uname -m) -o $DESTINATION
+}
+
+check_linux(){
     . /etc/os-release
-    case $ID in
-        ubuntu) sudo apt install docker docker.io
+    case $ID in 
+        ubuntu) 
+        sudo apt install wget curl docker docker.io -y
         ;;
-        arch) sudo pacman -S docker
+        arch) 
+        sudo pacman -S docker wget curl 
         ;;
-        darwin) brew install docker
+        debian) 
+        sudo apt install wget docker curl docker.io -y
         ;;
-        debian) sudo apt install docker docker.io
+    esac
+}
+
+checking_os(){
+    command=$(uname -s)
+    case $command in
+        Linux) 
+        check_linux
+        install_compose_in_linux
+        ;;
+        Darwin) 
+        brew install docker wget curl
+        install_compose_in_mac
         ;;
         *) echo "If windows you can see the documentation"
         ;;
