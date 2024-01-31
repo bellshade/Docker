@@ -1,0 +1,35 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/style.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+            darkColor: '#1F2544',
+            lightColor: '#FFD0EC'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-darkColor">
+    <div id="#" class="justify-center text-center pt-36 lg:pt-80">
+        <span class="title text-xl lg:text-5xl font-bold underline text-lightColor"></span>
+    </div>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script>
+      var typed = new Typed(".title", {
+          strings: ["Hallo Dunia", "Hello World", "Hallo wêreld", "ハローワールド", "전 세계 여러분 안녕하세요", "世界您好", "مرحبا دنيا", "ဟယ်လို ဒူနီယာ"],
+          typeSpeed: 100,
+          backSpeed: 50,
+          loop: true,
+      })
+  </script>
+</body>
+</html>
