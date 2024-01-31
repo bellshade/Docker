@@ -16,9 +16,3 @@ jobs:
         ./testing.sh
     - run: echo "status ${{ job.status }}"
 
-    - name: delete all depedency
-      run: |
-        cd ../../bats-core
-        ./uninstall.sh
-    - run: echo "success deleted"
-
