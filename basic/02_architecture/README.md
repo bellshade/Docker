@@ -1,5 +1,5 @@
 ## Architecture Docker
-<img src="https://docs.docker.com/get-started/images/docker-architecture.webp">
+<img src="../../.github/assets/docker-architecture.webp">
 
 Docker memiliki skema arsitektur client-server. Docker client menggunakan docker daemon untuk melakukan proses docker seperti build image, buat container, running container, dan running service untuk proses orchestration. Docker client dan docker daemon bisa running di system yang sama atau kadang ada juga ada yang custom untuk konek ke docker daemon yang lain. Namun bagaimana semua lifecycle docker itu terjadi ? Nahh secara simpel, docker client dan docker daemon itu sebenarnya melakukan koneksi ke REST Api dari si docker untuk request ke docker registry.
 
