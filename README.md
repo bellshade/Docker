@@ -17,6 +17,6 @@ Bantuan kalian diperlukan Agar Bellshade dapat lebih jauh lagi membantu anak-ana
 
 > "Dengan Bellshade, aku jadi bisa _ngoding_! Terima kasih Bellshade!"
 
-Kami sangat senang bila kalian ingin melakukan kontribusi pada repositori **Zig** ini. Tapi, sebelum itu, silahkan baca terlebih dahulu [peraturan dan pedomannya](CONTRIBUTING.md) yang telah kami siapkan. Terima kasih!
+Kami sangat senang bila kalian ingin melakukan kontribusi pada repositori **Docker** ini. Tapi, sebelum itu, silahkan baca terlebih dahulu [peraturan dan pedomannya](CONTRIBUTING.md) yang telah kami siapkan. Terima kasih!
 
 Untuk informasi lebih lanjut, mari gabung dalam komunitas [Discord Channel WPU](http://discord.gg/S4rrXQU) dan [Discord Channel Kelas Terbuka](https://discord.gg/eavqxxTU)
