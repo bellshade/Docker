@@ -1,4 +1,6 @@
 # Docker System
+![banner](../../.github/assets/docker-system.png)
+
 Docker system merupakan command yang digunakan untuk memanagement docker itu sendiri. Terkadang jika kita gagal dalam build image banyak cache yang telah terkumpul. Maka dari itu agar tidak tertumpuk dalam satu server dan mengurangi space server itu sendiri, docker ada command tersendiri untuk menghapus itu semua yaitu `docker system`. Ada beberapa sintaks yang bisa kamu ketahui untuk `docker system` itu sendiri, ialah
 
 | flag   | description                                                                                                         |

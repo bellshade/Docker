@@ -1,4 +1,5 @@
 ## Docker Image
+![banner](../../.github/assets/docker-image.png)
 Docker image merupakan aplikasi yang bisa kita gunakan secara bebas. Dengan adanya docker image kalian bebas mau pakai base image apa untuk membangun program kalian atau yang kalian butuhkan. Misal disini kita pengen running projek python , kita bisa menggunakan `image` python yang sudah tertera di docker hub. Oyaa, kalian bisa melihat semua image yang ada di [`Docker Hub`](https://hub.docker.com)
 
 Selain itu kalian juga bisa push project kalian ke `docker hub`. Hal ini dilakukan agar suatu saat jika kalian butuh untuk running project itu kembali dan source code hilang, kalian bisa pull docker image nya saja dan otomatis bisa langsung di running

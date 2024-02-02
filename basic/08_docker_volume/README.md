@@ -1,11 +1,13 @@
 ## Docker Volume
-Kita tahu bahwa docker itu sendiri adalah container tools. Dimana setiap folder yang ada, config-an yang ada itu hanya bisa diakses ketika kita di dalam containernya. Namun docker sendiri telah menyediakan fitur volume. Fitur inilah yang membuat kita bisa meng-export dan melihat perubahan secara realtime dari container ke local server kita. Maka dari itu developer sering menggunakan ini agar suatu saat ketika ada BUG didalam production mereka bisa backup data secara cepat.
+![banner](../../.github/assets/docker-volume.png)
 
-![archi](../../.github/assets/types-of-mounts-volume.webp)
+Kita tahu bahwa docker itu sendiri adalah container tools. Dimana setiap folder yang ada, config-an yang ada itu hanya bisa diakses ketika kita di dalam containernya. Namun docker sendiri telah menyediakan fitur volume. Fitur inilah yang membuat kita bisa meng-export dan melihat perubahan secara realtime dari container ke local server kita. Maka dari itu developer sering menggunakan ini agar suatu saat ketika ada BUG didalam production mereka bisa backup data secara cepat.
 
 Namun jika tipe data kalian adalah `persistent-data` kalian sebenarnya bisa mount / binding data ke local kalian dengan `tmpfs`. Namun tipe penyimpanan ini ialah bersifat sementara, ia akan terus bekerja ketika container dalam keadaan running. Namun jika container itu sendiri restart ataupun berhenti maka data nya juga akan hilang
 
 ## Command Volume
+![archi](../../.github/assets/types-of-mounts-volume.webp)
+
 Untuk membuat volume sendiri kalian bisa menggunakan 
 ```
 $ docker volume create [NAME_VOLUME]

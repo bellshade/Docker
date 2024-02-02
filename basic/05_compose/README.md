@@ -1,4 +1,5 @@
 ## Docker Compose
+![banner](../../.github/assets/docker-compose.png)
 Compose merupakan skema script yang sering digunakan untuk build container, build image, running container, dan stop container. Compose mempermudah kita untuk deploy beberapa container dalam satu waktu. Ada beberapa hal yang harus diketahui untuk setup docker compose. Untuk format sebuah file docker compose yaitu `docker-compose.yml`.
 
 | Statement      | Description                                                   |

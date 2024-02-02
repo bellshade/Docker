@@ -1,4 +1,6 @@
 ## Apa itu Dockerfile ?
+![banner](../../.github/assets/dockerfile.png)
+
 Dockerfile ialah skema script dari docker yang digunakan untuk build image dengan code yang telah kita memiliki. Didalam dockerfile ada beberapa statement yang penting ketika building docker image, berikut beberapa statement yang penting dalam building image di `Dockerfile`
 
 | Statement  | Description                                                             |

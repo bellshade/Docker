@@ -1,8 +1,6 @@
 ## Docker Container
+![banner](../../.github/assets/docker-container.png)
 Secara simpelnya container ialah unit yang running dari image yang digunakan. Ketika image sudah berhasil kita pull dan untuk memakai image tersebut kita harus build container terlebih dahulu. Mungkin secara gambaran halusnya, container layaknya `komputer` dan image adalah `os` nya. Setiap container yang kita buat juga memiliki id , serta kita juga bisa menamai container kita sesuka hati kita. Namun syarat dari membuat container ialah port yang kita gunakan tidak boleh digunakan oleh service lain.
-<div align="center">
-    <img src="https://www.section.io/engineering-education/lxc-vs-docker-what-is-the-difference-and-why-docker-is-better/a-docker-container.png">
-</div>
 
 ## Create Container
 Lalu bagaimana cara kita membuat container tersebut ? Cara membuat container sangatlah mudah kalian bisa memakai syntax `docker container create -it -dp [portPublish]:[portContainer] --name=[nama-container] [image]`. Ada beberapa flag yang mungkin terdengar asing. 
