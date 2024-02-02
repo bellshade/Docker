@@ -1,10 +1,24 @@
+# version untuk saat ini ialah version 3.9 
+# untuk installasi kalian bisa jalanin saja script di root folder ini `install.sh`
 version: '3.9'
-
+# services define apa saja yang akan dilakukan build 
+# bahkan sampai pembuatan container dan running juga
 services:
+
+  # ini nama service bebas kalian boleh ganti sesuka kalian
   web:
+    # ini untuk penamaan container name
+    # dibuat semudah mungkin agar mudah diingat dan gampang dikelola
     container_name: web
+
+    # ini untuk building image dari configan Dockerfile yang kita punya
     build:
+      # context diartikan untuk running di path itu juga
       context: .
+
+      # sedangkan ini untuk file Dockerfile kita sendiri
       dockerfile: Dockerfile
+    
+    # port publisher dan port image yang udah ada di default valuenya
     ports:
       - 8080:8080
