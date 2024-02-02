@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macOS, ubuntu-latest]
+        os: [ubuntu-latest]
         # untuk menggunakan arsitektur pada arm dan xx86
         arm: [x86, arm64]
 
@@ -35,13 +35,6 @@ jobs:
           echo "Installing required dependencies"
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-
-      - name: Install Docker on macOS
-        if: ${{ runner.os.name }} == 'macOS'
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install docker
-
 
       - name: Python Linting
         run: |
