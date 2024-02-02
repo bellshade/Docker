@@ -12,7 +12,7 @@ jobs:
     - name: running testing docker
       run: |
         ls ${{ github.workspace }}
-        chmod +x testing.sh
-        ./testing.sh
+        chmod +x .github/build.sh
+        ./.github/build.sh
     - run: echo "status ${{ job.status }}"
 
