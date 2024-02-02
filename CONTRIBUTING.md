@@ -11,27 +11,17 @@ Semua boleh ikut berkontribusi sekecil apapun dengan pengecualian sebagai beriku
 s
 ## Testing Image
 **Installasi**
-Untuk testing pada repository docker saat ini menggunakan shell scripting. Untuk pengguna windows pun bisa asalkan punya docker engine yang cli. Ada beberapa flag yang harus dipahami untuk melakukan build testing
-
-| Flag | Description                                             | Usage              |
-|------|---------------------------------------------------------|--------------------|
-| -f   | file dockerfile jika pakai default tidak usah digunakan | -f [namaFile]      |
-| -i   | Untuk nama image                                        | -i [namaImage]     |
-| -t   | tag image                                               | -f ['tagImage']    |
-| -d   | port yang ingin di publish                              | -p [port]          |
-| -s   | source port dari docker image                           | -s [port]          |
-| -c   | nama untuk container                                    | -c [namaContainer] |
-| -e   | expected output untuk echo type                         | -e ['expected']    |
-
-**Usage**
-Untuk saat ini ada 2 type yaitu `app` dan `echo`, khusus type `app` bagi yang memang harus publish port untuk di running, bagi yang `echo` jika hanya text yang keluar. Contoh command jika type `app` 
-
+Untuk testing image saat ini kalian wajib memiliki python untuk test docker image yang sudah kalian buat. Kalian bisa ikuti beberapa langkah dibawah ini 
 ```
-bash build.sh -t 'app' -d 3000 -s 80 -c sample-app -f Dockerfile.app -i sample-image
+pip install -r requirepments.txt
 ```
-Jika kalian type nya adalah `echo` kalian bisa memakai cara seperti ini untuk testing image kalian
-```
-bash build.sh -t 'echo' -e 'Hello Bellshade' -c sample-app-2 -f Dockerfile.echo -i sample-image-2
+Setelah install requirepments, cara kalian testing image kalian bisa ikuti command dibawah, jika file Dockerfile kalian ada di tempat lain kalian bisa arahkan langsung misal di `./path/Dockerfile` dan untuk port nya sesuaikan dengan port dari expose imagenya
+```console
+python build.py [FILE] [PORT]
+
+or
+
+python3 build.py [FILE] [PORT]
 ```
 
 # *Pull Request*
