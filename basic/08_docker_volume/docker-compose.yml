@@ -1,0 +1,35 @@
+# version untuk saat ini ialah version 3.9 
+# untuk installasi kalian bisa jalanin saja script di root folder ini `install.sh`
+version: '3.9'
+# services define apa saja yang akan dilakukan build 
+# bahkan sampai pembuatan container dan running juga
+services:
+  # ini nama service bebas mau apa aja asal readable dalam team
+  db:
+    # image yang digunakan untuk service db
+    image: postgres:alpine
+
+    # nama container , sebenarnya biar mudah saja di kelola
+    # karena secara default docker sudah membuat nama container secara otomatis
+    container_name: db-app
+
+    # hostname , ini defaultnya kosong , jadi kalian bisa setup
+    hostname: db
+
+    # env, ini penting apalagi berhubungan dengan statefull data
+    # setiap image punya env berbeda beda, kalian bisa liat di official docs docker hubnya
+    environment:
+      - POSTGRES_USER=bellshade
+      - POSTGRES_DB=sample_db
+      - POSTGRES_PASSWORD=bellshade
+    
+    # port yang akan dipublish 
+    # tergantung dari image
+    # setiap image punya port yang berbeda beda 
+    ports:
+      - 5432:5432
+    
+    volumes:
+      # path volume dari docker image kalian bisa lihat di official docsnya
+      # untuk ke local bebas tergantung kalian mau simpan dimana
+      - ./data/backup:/var/lib/postgresql/data
