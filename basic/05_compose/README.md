@@ -22,11 +22,33 @@ Diatas adalah statement penting yang sering digunakan untuk deployment, docker s
 Cara buat file compose sebenarnya mudah dengan `docker-compose.yml` , terus kalian bisa setup sesuai kemauan kalian. Contohnya seperti disini saya udah setup docker-compose saya seperti dibawah ini.
 
 ```yml
+# version untuk saat ini ialah version 3.9 
+# untuk installasi kalian bisa jalanin saja script di root folder ini `install.sh`
 version: '3.9'
+# services define apa saja yang akan dilakukan build 
+# bahkan sampai pembuatan container dan running juga
 services:
+
+  # ini adalah service webapp, kalian bebas custom sesuai keinginan kalian
   webapp:
+
+    # ini image yang ingin digunakan kedalam service ini
+    # semua tergantung kebutuhan, disini saya kasih contoh nginx
     image: nginx
+    
+    # nama container , sebenarnya biar mudah saja di kelola
+    # karena secara default docker sudah membuat nama container secara otomatis
     container_name: webapp
+
+    # env, ini tergantung setiap image, ada env yang penting beberapa image
+    # seperti database yang butuh env password, user, dan default db name
+    # namun disini cuma contoh saja 
+    environment:
+      - OWNER=Bellshade
+      - LINK_GITHUB=https://github.com/bellshade/Docker
+    
+    # publisher port yang dimana ini akan digunakan untuk lient akses ke container kita
+    # port yang image bisa kalian baca di official docsnya
     ports:
       - 4000:80
 ```
@@ -37,48 +59,128 @@ $ docker-compose up -d
 
 Kalau kalian punya dockerfile sendiri dan ingin building serta buat containernya kalian bisa tambahkan syntax `build` dan setup file serta path isi dari Dockerfilenya. 
 ```yml
+# version untuk saat ini ialah version 3.9 
+# untuk installasi kalian bisa jalanin saja script di root folder ini `install.sh`
 version: '3.9'
+# services define apa saja yang akan dilakukan build 
+# bahkan sampai pembuatan container dan running juga
 services:
+  
+  # ini dia service yang sering digunakan
+  # jika kalina punya image yang siap di build
+  # compose support  bagi kalian yang punya config-an sendiri
   custom_image:
+
+    # build disini tandanya dia akan melakukan buuld image
     build:
+      # context digunakan untuk execution path
+      # mayoritas langsung . karena langsung di build disitu
       context: .
+
+      # dockerfile ini bisa disesuaikan tempat configan kalian
       dockerfile: Dockerfile
     container_name: custom_image
     ports:
       - 8000:8080
+    networks:
+      - connection
 ```
 
 ## Depends On
 Depends On sering digunakan jika kalian membutuhkan service lain. Sebagai contohnya misal disini saya ingin build container dengan image `nginx` saya membutuhkan database postgres. Maka dari itu kita bisa menggunakan `depends_on` contoh sample compose nya seperti ini
 
 ```yml
+# version untuk saat ini ialah version 3.9 
+# untuk installasi kalian bisa jalanin saja script di root folder ini `install.sh`
 version: '3.9'
+# services define apa saja yang akan dilakukan build 
+# bahkan sampai pembuatan container dan running juga
 services:
+
+  # ini adalah service webapp, kalian bebas custom sesuai keinginan kalian
   webapp:
+
+    # ini image yang ingin digunakan kedalam service ini
+    # semua tergantung kebutuhan, disini saya kasih contoh nginx
     image: nginx
+    
+    # nama container , sebenarnya biar mudah saja di kelola
+    # karena secara default docker sudah membuat nama container secara otomatis
     container_name: webapp
+
+    # env, ini tergantung setiap image, ada env yang penting beberapa image
+    # seperti database yang butuh env password, user, dan default db name
+    # namun disini cuma contoh saja 
     environment:
       - OWNER=Bellshade
       - LINK_GITHUB=https://github.com/bellshade/Docker
+    
+    # publisher port yang dimana ini akan digunakan untuk lient akses ke container kita
+    # port yang image bisa kalian baca di official docsnya
     ports:
       - 4000:80
+    
+    # depends_on tandanya ia linked ke db
+    # dimana setiap data nya akan bisa diakses oleh service webapp
+    # bahkan sampai hostnamenya juga bisa digunakan
+    # usecase ini sering terjadi jika punya app berbasis statefull
     depends_on:
       - db
+
+    # networks ini digunakan untuk semua service yang ada memiliki segment yang sama
+    # setiap network punya driver nya masing masing 
+    # next kita bahas ini
     networks:
       - connection
     
   db:
+
+    # seperti biasa ini tergantung kebutuhan
+    # sesuaikan dengan kemauan kalian
+    # tujuan di kustomisasi agar mudah di kelola oleh team kalian
     image: postgres:alpine
     container_name: dbapp
+
+    # ini env yang penting
+    # karena ada di official docsnya 
+    # kalian bisa baca tergantung imagenya, misal disini postgres, kalian bisa baca di sini :
+    # https://hub.docker.com/_/postgres
     environment:
       - POSTGRES_USER=bellshade
       - POSTGRES_PASSWORD=bellshade
       - POSTGRES_DB=simpletest
+    
+    # oya kalian bisa custom hostnya sesuka kalian
+    # disini tujuannya agar allow siapa yang bisa query ke container
+    # misal disini hanya localhost saja yang diperbolehkan query
+    # jadi ip manapun tidak akan bisa query
     ports:
       - "127.0.0.1:5432:5432"
     networks:
       - connection
+  
+  # ini dia service yang sering digunakan
+  # jika kalina punya image yang siap di build
+  # compose support  bagi kalian yang punya config-an sendiri
+  custom_image:
 
+    # build disini tandanya dia akan melakukan buuld image
+    build:
+      # context digunakan untuk execution path
+      # mayoritas langsung . karena langsung di build disitu
+      context: .
+
+      # dockerfile ini bisa disesuaikan tempat configan kalian
+      dockerfile: Dockerfile
+    container_name: custom_image
+    ports:
+      - 8000:8080
+    networks:
+      - connection
+
+# disini proses buat networks dengan nama connection
+# driver yang digunakan ialah bridge
+# agar ketikanya bisa sharing data dan punya segment yang sama
 networks:
   connection:
     driver: bridge
