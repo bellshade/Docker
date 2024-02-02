@@ -24,8 +24,7 @@
 
 <!-- Checklist unit tester / linter yang sesuai. -->
 
-- [ ] bats
-- [ ] bash
+- [ ] pytest-testinfra
 
 ## Environment
 
