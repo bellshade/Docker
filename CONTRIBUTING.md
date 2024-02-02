@@ -13,9 +13,9 @@ s
 **Installasi**
 Untuk testing image saat ini kalian wajib memiliki python untuk test docker image yang sudah kalian buat. Kalian bisa ikuti beberapa langkah dibawah ini 
 ```
-pip install -r requirepments.txt
+pip install -r requirements.txt
 ```
-Setelah install requirepments, cara kalian testing image kalian bisa ikuti command dibawah, jika file Dockerfile kalian ada di tempat lain kalian bisa arahkan langsung misal di `./path/Dockerfile` dan untuk port nya sesuaikan dengan port dari expose imagenya
+Setelah install requirements, cara kalian testing image kalian bisa ikuti command dibawah, jika file Dockerfile kalian ada di tempat lain kalian bisa arahkan langsung misal di `./path/Dockerfile` dan untuk port nya sesuaikan dengan port dari expose imagenya
 ```console
 python build.py [FILE] [PORT]
 
