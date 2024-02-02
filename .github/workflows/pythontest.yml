@@ -7,13 +7,11 @@ on:
 
 jobs:
   build:
-    # menjalankan testing dengan 3 os yaitu
-    # linux (ubuntu), windows, dan macOS
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [ ubuntu-latest]
         # untuk menggunakan arsitektur pada arm dan xx86
         arm: [x86, arm64]
 
