@@ -7,6 +7,6 @@ running_test() {
     ./install.sh /usr/local
 
     cd ..
-    cd example/hello-bellshade
-    bats ../../build.bats
+    cd ../example/hello-bellshade/
+    bats ../../.gitub/build.bats
 }

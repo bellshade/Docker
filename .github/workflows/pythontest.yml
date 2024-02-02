@@ -1,0 +1,44 @@
+name: docker test with python
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    # menjalankan testing dengan 3 os yaitu
+    # linux (ubuntu), windows, dan macOS
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        # untuk menggunakan arsitektur pada arm dan xx86
+        arm: [x86, arm64]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setting python versi 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip dependecies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt')}}
+
+      - name: Install Dependencies
+        run: |
+          echo "Installing required dependencies"
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+
+      - name: Python Linting
+        run: |
+          ls ${{ github.workspace }}
+          echo "Running pytest-testinfra tests"
+          python .github/testing.py
