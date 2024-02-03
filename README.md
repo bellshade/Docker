@@ -11,6 +11,12 @@ $ chmod +x install.sh
 $ ./install.sh
 ```
 
+## Sample Usage
+
+```
+$ docker run bellshade/hello-bellshade
+```
+
 ## 🤩 Ayo ikut kami dan berkontribusi! 🤩
 
 Bantuan kalian diperlukan Agar Bellshade dapat lebih jauh lagi membantu anak-anak Indonesia belajar _programming_, kita butuh tenaga kalian!

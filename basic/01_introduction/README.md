@@ -23,8 +23,7 @@ Keuntungan docker sendiri membuat source code yang masih memiliki versi lama itu
 
 Berbeda dengan tidak pakai docker , source code yang sudah tertera di server mau gamau harus dirombak total, belum lagi jika dalam sebuah aplikasi ada plugin yang hanya support di version tertentu. Maka dari itu docker adalah solusi untuk wrapping aplikasi tanpa obrak abrik server.
 
-### Contoh `Hello World` pada Docker
+### Sample Usage
 ```bash
-docker pull hello-world
-docker run hello-world
+docker run bellshade/hello-bellshade
 ```
