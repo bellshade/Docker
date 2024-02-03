@@ -25,5 +25,5 @@ Berbeda dengan tidak pakai docker , source code yang sudah tertera di server mau
 
 ### Sample Usage
 ```bash
-docker run bellshade/hello-bellshade
+docker run bellshade/bellshade
 ```
