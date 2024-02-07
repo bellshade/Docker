@@ -1,0 +1,55 @@
+# version untuk saat ini ialah version 3.9 
+# untuk installasi kalian bisa jalanin saja script di root folder ini `install.sh`
+version: '3.9'
+# services define apa saja yang akan dilakukan build 
+# bahkan sampai pembuatan container dan running juga
+services:
+
+  # ini adalah service webapp, kalian bebas custom sesuai keinginan kalian
+  webapp:
+
+    # build syntax yang digunakan untuk building Dockerfile yang kita punya
+    build: 
+      context: .
+      dockerfile: dockerfile
+
+    # deploy syntax yang disetup ketika lagi dalam proses deployment
+    deploy:
+      # resources statement digunakan untuk mengatur limit terhadap container yang kita gunakan
+      resources:
+        # nah disini pointnya, yang kita mau manage ada disini
+        # seperti manage cpu dengan 30% dari yang kita miliki
+        # resource memory yang ingin kita gunakan 
+        limits:
+          cpus: '0.3'
+          memory: 200m
+          pids: 1
+
+    # nama container , sebenarnya biar mudah saja di kelola
+    # karena secara default docker sudah membuat nama container secara otomatis
+    container_name: webapp
+
+    # env, ini tergantung setiap image, ada env yang penting beberapa image
+    # seperti database yang butuh env password, user, dan default db name
+    # namun disini cuma contoh saja 
+    environment:
+      - OWNER=Bellshade
+      - LINK_GITHUB=https://github.com/bellshade/Docker
+    
+    # publisher port yang dimana ini akan digunakan untuk lient akses ke container kita
+    # port yang image bisa kalian baca di official docsnya
+    ports:
+      - 4000:80
+    
+    # depends_on tandanya ia linked ke db
+    # dimana setiap data nya akan bisa diakses oleh service webapp
+    # bahkan sampai hostnamenya juga bisa digunakan
+    # usecase ini sering terjadi jika punya app berbasis statefull
+    depends_on:
+      - db
+
+    # networks ini digunakan untuk semua service yang ada memiliki segment yang sama
+    # setiap network punya driver nya masing masing 
+    # next kita bahas ini
+    networks:
+      - connection
